@@ -172,11 +172,10 @@ const menu = [
 
 const root = document.getElementById("root");
 function createTreeView(menu, currentNode) {
-  //  1. root 속에 li(menu) 넣기
   for (let el of menu) {
     // li 만들기
     const liElement = document.createElement("li");
-    //currentNode에 넣기 : currentNode는
+    // currentNode: root = currentNode에 append를 하는 것이 root에 붙이는 것과 같음
     currentNode.append(liElement);
 
     if (el.children) {
@@ -197,9 +196,6 @@ function createTreeView(menu, currentNode) {
     }
   }
 }
-console.log(currentNode);
-//  이 인자는 현재 처리 중인 노드를 나타내며, 이 노드에 자식 노드가 있는 경우 해당 자식
-//  노드를 처리하기 위해 재귀적으로 createTreeView 함수를 호출하는 데 사용됩니다.
-//  따라서 currentNode는 메뉴 아이템을 가리키는 객체입니다.
 
+// root = currentNode
 createTreeView(menu, root);

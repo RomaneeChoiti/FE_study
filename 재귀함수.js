@@ -179,19 +179,20 @@ function createTreeView(menu, currentNode) {
     currentNode.append(liElement);
 
     if (el.children) {
-      // input
       const inputElement = document.createElement("input");
+      // input : setAttribute를 이용해서 "type", "checkbox" 설정
       inputElement.setAttribute("type", "checkbox");
-      // span
       const spanElement = document.createElement("span");
+      // span : el.name 추가(textContent)
       spanElement.textContent = el.name;
       // ul
       const ulElement = document.createElement("ul");
-
+      // li에 input span ul 요소를 붙임 ul을 붙히는 이유, Ul -> li -> ul(ulElement) ->li 이러한 모습이기에
       liElement.append(inputElement, spanElement, ulElement);
-
+      // 재귀: 위에 함수 반복,
       createTreeView(el.children, ulElement);
     } else {
+      // children이 없는 경우 (마지막) 더 이상 들어갈 곧이 없는 경우
       liElement.textContent = el.name;
     }
   }
